@@ -7,15 +7,20 @@ var express           = require('express'),
 mongoose.connect('mongodb://localhost:27017/library');
 
 app.use(bodyParser());
-
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/client/views/index.html');
-});
+app.use(express.static(__dirname));
+// app.get('/', function (req, res) {
+//   res.sendfile(__dirname + '/client/views/index.html');
+// });
 
 app.use('/js', express.static(__dirname + '/client/js'));
 
-app.get('/api/meetups', meetupsController.list);
-app.post('/api/meetups', meetupsController.create);
+app.get('/api/book', meetupsController.getbook);
+app.post('/api/book', meetupsController.addbook);
+app.put('/api/book', meetupsController.updateEntry);
+
+app.get('/api/student', meetupsController.getStudent);
+app.post('/api/student', meetupsController.addStudent);
+
 
 app.listen(3000, function() {
   console.log('I\'m Listening...');
