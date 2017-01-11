@@ -1,0 +1,29 @@
+<div>
+	<div>
+	    <form ng-submit="addStudent()">
+		    <div><input type="text" placeholder="Student rollnumber" ng-model="student.rollnumber" /></div>
+		    <div><input type="text" placeholder="Student name" ng-model="student.name" /></div>
+		    <div><input type="text" placeholder="Student Branch" ng-model="student.branch" /></div>
+		    <div><button type="submit">Add student</button></div>
+	    </form>
+	</div>
+	<input type="" name="" ng-model="search.$" />
+	<div>
+		<table class="student table table-responsive">
+		    <thead>
+		          <th>Student Name</th>
+		          <th>Branch</th>
+		          <th>Student id</th>
+		          <th>Roll Number</th>
+		    </thead>
+		    <tbody ng-repeat="s in TotalStudents| filter:search track by $index">
+		      <tr>
+		        <td>{{s.name}}</td>
+		        <td>{{s.branch}}</td>
+		        <td>{{s.student_id}}</td>
+		        <td>{{s.rollnumber}}</td>
+		      </tr>
+		    </tbody>
+  		</table>
+	</div>
+</div>

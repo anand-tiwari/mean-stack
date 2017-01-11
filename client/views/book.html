@@ -1,0 +1,28 @@
+<div ng-init="initiate()">
+    <button ng-click="issueBook()">issue book</button>
+    <form ng-submit="addBook()">
+        <input type="text" placeholder="Book name" ng-model="book.name" />
+        <input type="text" placeholder="Book author" ng-model="book.author"/>
+        <button type="submit">Add Book</button>
+    </form>
+  <table>
+    <thead>
+        <tr>
+          <th>Book Name</th>
+          <th>Author</th>
+          <th>---</th>
+          <th> issue book !!!</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="book in TotalBooks track by $index">
+      <tr>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book._id}}</td>
+        <td>
+          <button type="button" class="btn btn-default" ng-click="open(book.name, book._id)">issue book</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
