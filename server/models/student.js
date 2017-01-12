@@ -5,6 +5,7 @@ module.exports = mongoose.model('Student', {
   name: String,
   branch: String,
   rollnumber:String,
-  totalCapacity: Number,
-  already_issued: Number
+  email:String,
+  capacity:Number,
+  issued:Number
 });

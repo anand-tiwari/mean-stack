@@ -3,8 +3,13 @@ var app = angular.module('app', ['ui.router','ngResource','ngAnimate', 'ngSaniti
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'client/views/login.html',
+        controller: 'auth.controller.js'
+    })
       .state('home', {
-        url: '/',
+        url: '/home',
         templateUrl: 'client/views/book.html',
         controller: 'appController'
     })
@@ -12,6 +17,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/student',
         templateUrl: 'client/views/student.html',
         controller: 'studentController'
+    })
+      .state('addstudent', {
+        url: '/addstudent',
+        templateUrl: 'client/views/studentEntryForm.html',
+        controller: 'studentController'
     });
 
-  }]);
+}]);

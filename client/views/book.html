@@ -1,28 +1,69 @@
-<div ng-init="initiate()">
-    <button ng-click="issueBook()">issue book</button>
-    <form ng-submit="addBook()">
-        <input type="text" placeholder="Book name" ng-model="book.name" />
-        <input type="text" placeholder="Book author" ng-model="book.author"/>
-        <button type="submit">Add Book</button>
-    </form>
-  <table>
+<div ng-init="initiate()" class="container">
+  <div class="row">
+    <!-- <div class="col-md-4"><button ng-click="issueBook()">issue book</button></div> -->
+    <div class="col-md-6">
+      <label class="searchlabel">SEARCH HERE</label>
+      <input type="text" name="book" ng-model="searchbook.$" placeholder="search value">
+    </div>
+    <div class="col-md-6">
+      <form name="newBookForm" ng-submit="addBook(newBookForm.$valid)">
+          <input type="text" placeholder="Book name" ng-model="book.name" required />
+          <input type="text" placeholder="Book author" ng-model="book.author" required />
+          <button type="submit" class="addbook" ng-disabled="newBookForm.$invalid">Add Book</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+  <table class="table">
     <thead>
         <tr>
           <th>Book Name</th>
           <th>Author</th>
-          <th>---</th>
-          <th> issue book !!!</th>
+          <th>Book ID</th>
+          <th>Issue book</th>
         </tr>
     </thead>
-    <tbody ng-repeat="book in TotalBooks track by $index">
+    <tbody ng-repeat="book in TotalBooks | filter:searchbook track by $index">
       <tr>
-        <td>{{book.name}}</td>
+        <td ui-sref="detail" ng-click="bookDetail(book.name, book.book_id)">{{book.name}}</td>
         <td>{{book.author}}</td>
-        <td>{{book._id}}</td>
+        <td>{{book.book_id}}</td>
         <td>
-          <button type="button" class="btn btn-default" ng-click="open(book.name, book._id)">issue book</button>
+          <button type="button" class="btn btn-default" data-toggle="modal" 
+                  data-target="#myModal" ng-if="book.available=='yes' "
+                  ng-click="open(book.name, book.book_id)">BORROW</button>
+          <button type="button" class="btn btn-default" ng-if="book.available !='yes' "
+                  ng-click="submitBook(book.book_id)">RELEASE</button>
         </td>
       </tr>
     </tbody>
   </table>
+  </div>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">User Modal</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="user_name" ng-model="issue.student_name" 
+                placeholder="Enter Student name">
+          <input type="text" name="user_id" ng-model="issue.student_id" registered 
+                placeholder="Enter Student ID">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" 
+                ng-disabled="!issue.student_id || !issue.student_name" ng-click="issueBook()">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal End  -->
 </div>

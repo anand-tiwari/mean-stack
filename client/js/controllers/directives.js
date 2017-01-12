@@ -6,7 +6,9 @@ app.directive('registered', function($http) {
            link: function (scope, element, attrs, ngModel) {
                 element.bind('blur', function (e) {
                      ngModel.$setValidity('taken', true);
-                     $http.get("/api/student" , {student_id:element.val()}).success(function(data) {
+                     var d = {};
+                     d["student_id"] = element.val();
+                     $http.get("/api/student",d).success(function(data) {
                      	console.log(data);
                           if (!data) {
                               ngModel.$setValidity('taken', false);

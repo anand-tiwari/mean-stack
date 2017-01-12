@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h3>Create A New Student Account!</h3>
+</div>
+<form name="form.studentForm" ng-submit="addStudent()" novalidate>
+    <div class="modal-body">
+        <!-- NAME -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" ng-model="student.name" required>
+            <p ng-show="form.studentForm.name.$invalid && !form.studentForm.name.$pristine" 
+                class="help-block">You name is required.</p>
+        </div>
+        <!-- BRANCH -->
+        <div class="form-group">
+            <label>Branch</label>
+            <input type="text" name="branch" class="form-control" ng-model="student.branch" required>
+            <p ng-show="form.studentForm.branch.$invalid && !form.studentForm.branch.$pristine" 
+                class="help-block">You branch name is required.</p>
+        </div>
+        <!-- ROLL NUMBER -->
+        <div class="form-group">
+            <label>Rollno</label>
+            <input type="text" name="rollnumber" class="form-control" ng-model="student.rollnumber" required>
+            <p ng-show="form.studentForm.rollnumber.$invalid && !form.studentForm.rollnumber.$pristine"
+                class="help-block">Enter a valid rollnumber</p>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="student.email" required>
+            <p ng-show="form.studentForm.email.$invalid && !form.studentForm.email.$pristine"
+                class="help-block">Enter a valid Email</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="form.studentForm.$invalid">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
