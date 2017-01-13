@@ -1,8 +1,7 @@
-<div class="modal-header">
+<div>
     <h3>Create A New Student Account!</h3>
 </div>
 <form name="form.studentForm" ng-submit="addStudent()" novalidate>
-    <div class="modal-body">
         <!-- NAME -->
         <div class="form-group">
             <label>Name</label>
@@ -32,8 +31,5 @@
                 class="help-block">Enter a valid Email</p>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" ng-disabled="form.studentForm.$invalid">OK</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-    </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="form.studentForm.$invalid">Add Student</button>
 </form>
