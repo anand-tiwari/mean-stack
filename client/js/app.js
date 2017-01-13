@@ -4,9 +4,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('login', {
-        url: '/login',
+        url: '/',
         templateUrl: 'client/views/login.html',
-        controller: 'auth.controller.js'
+        controller: 'AuthCtrl'
     })
       .state('home', {
         url: '/home',

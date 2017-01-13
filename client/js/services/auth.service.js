@@ -14,7 +14,6 @@ app.factory('AuthService', function ($http,$state,$rootScope) {
             success: function (response) {
                 localStorage.setItem('_Account',response.session.token);
                 localStorage.setItem('UserName',response.session.username);
-                $log.log('success',response);
                 $rootScope.isAuthenticated = true;
                 $state.go('home');
             },
