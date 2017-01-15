@@ -1,6 +1,5 @@
-<div>
-Login Page
-<form name="form.loginForm" ng-submit="login()" novalidate>
+<div class="container">
+<form name="form.loginForm" ng-submit="loginFun()" novalidate>
         <!-- NAME -->
         <div class="form-group">
             <label>User Name</label>
@@ -15,7 +14,6 @@ Login Page
             <p ng-show="form.studentForm.passWord.$invalid && !form.studentForm.passWord.$pristine" 
                 class="help-block">You passWord is required.</p>
         </div>
-    </div>
     <button type="submit" class="btn btn-primary" ng-disabled="form.loginForm.$invalid">login</button>
 </form>
 </div>

@@ -1,5 +1,4 @@
-app.controller('appController', function ($scope, $resource, $http, $state) {
-    
+app.controller('appController', function ($scope, $resource, $http, $state, $rootScope) {
     $scope.navbarCollapsed = true;
 	$scope.TotalBooks = [];
 
@@ -84,4 +83,11 @@ app.controller('appController', function ($scope, $resource, $http, $state) {
 		});	
 	};
 	/*end of Remove Transaction*/
+
+	$rootScope.authenticated = true;
+	
+    $rootScope.logout = function(){
+      $rootScope.authenticated = false;
+      $state.go('login');
+    };
 });

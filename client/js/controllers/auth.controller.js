@@ -1,24 +1,18 @@
 app.controller('AuthCtrl', function ($scope, AuthService, $state,$rootScope) {
   	'use strict';
+    $rootScope.authenticated = false;
     function init(){
-        $rootScope.login();
-    };
-    $scope.login ={
-      userName :'anand@gmail.com',
-      passWord: 'welcome'
-    };
-    
-    $scope.loginForm = function(){
-        $rootScope.login();
+        $rootScope.loginFun();
     };
 
-    $rootScope.login = function(){
+    $scope.login ={
+      userName :'anand',
+      passWord: 'welcome1'
+    };
+
+    $rootScope.loginFun = function(){
         AuthService.signIn($scope.login.userName,$scope.login.passWord);
     };
-
-    $rootScope.logout = function(){
-      $state.go('login');
-    };
-  	init();
+    //init();
 });
   

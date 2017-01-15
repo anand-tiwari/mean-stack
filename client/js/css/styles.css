@@ -42,3 +42,15 @@ table th {
     color: white;
     background-color: #248FFF;
 }
+
+.logout{
+	background: #2e925f;
+    color: white !important;
+    font-weight: 900;
+    font-size: 20px;
+    font-family: initial;
+    cursor: pointer;
+}
+.logout:hover {
+	background: #2e925f !important;
+}

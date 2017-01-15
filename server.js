@@ -14,6 +14,8 @@ app.use(express.static(__dirname));
 
 app.use('/js', express.static(__dirname + '/client/js'));
 
+app.post('/api/login', meetupsController.auth);
+
 app.get('/api/book', meetupsController.getbook);
 app.post('/api/book', meetupsController.addbook);
 
